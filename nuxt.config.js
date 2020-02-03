@@ -72,5 +72,29 @@ export default {
     */
     extend (config, ctx) {
     }
+  },
+  auth: {
+    strategies: {
+      local: {
+        endpoints: {
+          login: { url: '/api/v1/users/get-token', method: 'post', propertyName: 'token' },
+          user: { url: '/api/v1/users/detail/me/', method: 'get', propertyName: false },
+          logout: false
+        },
+        tokenType: 'Bearer'
+      }
+    },
+    redirect: {
+      login: '/account/login/',
+      logout: '/account/login/',
+      callback: '/account/login',
+      home: '/'
+    },
+    rewriteRedirects: false,
+    fullPathRedirect: false,
+    localStorage: false
+  },
+  router: {
+    middleware: ['auth']
   }
 }
