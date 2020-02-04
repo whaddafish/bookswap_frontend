@@ -13,4 +13,5 @@ export default function ({ $axios, redirect }) {
         redirect('/account/login')
       }
     })
+  }
   
